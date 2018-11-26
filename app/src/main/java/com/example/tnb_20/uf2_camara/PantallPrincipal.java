@@ -32,11 +32,6 @@ public class PantallPrincipal extends AppCompatActivity {
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                    try{
-                        createImageFile();
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
                 }
             }
         });
@@ -49,17 +44,13 @@ public class PantallPrincipal extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             image.setImageBitmap(imageBitmap);
 
-
-
             try {
-                File f = new File("app\\java\\archivo_prueba.txt");
-                FileOutputStream out = new FileOutputStream(f);
-                out.write(2);
+                FileOutputStream out = openFileOutput("prueba.jpg",MODE_APPEND);
+                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
                 out.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            //imageBitmap.compress();
         }
     }
 }
