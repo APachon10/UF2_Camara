@@ -26,6 +26,10 @@ public class PantallPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantall_principal);
 
+        ImageView imagenn = findViewById(R.id.Imagen);
+        Uri contentUri = Uri.parse("prueba.jpg");
+        imagenn.setImageURI(contentUri);
+
         Button captura = findViewById(R.id.Capturar);
         captura.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,11 +52,9 @@ public class PantallPrincipal extends AppCompatActivity {
             try {
                 FileOutputStream out = openFileOutput("prueba.jpg",MODE_PRIVATE);
                 imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
-
-                Uri contentUri = Uri.parse("prueba.jpg");
-                image.setImageURI(contentUri);
-
                 out.close();
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
