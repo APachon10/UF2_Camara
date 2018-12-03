@@ -3,6 +3,7 @@ package com.example.tnb_20.uf2_camara;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -45,8 +46,12 @@ public class PantallPrincipal extends AppCompatActivity {
             image.setImageBitmap(imageBitmap);
 
             try {
-                FileOutputStream out = openFileOutput("prueba.jpg",MODE_APPEND);
+                FileOutputStream out = openFileOutput("prueba.jpg",MODE_PRIVATE);
                 imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+
+                Uri contentUri = Uri.parse("prueba.jpg");
+                image.setImageURI(contentUri);
+
                 out.close();
             } catch (Exception e) {
                 e.printStackTrace();
