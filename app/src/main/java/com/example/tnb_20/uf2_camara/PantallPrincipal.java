@@ -25,9 +25,11 @@ public class PantallPrincipal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantall_principal);
-
+        String path = "data/data/com.example.tnb_20.uf2_camara/files";
         ImageView imagenn = findViewById(R.id.Imagen);
-        Uri contentUri = Uri.parse("prueba.jpg");
+
+        File f = new File( path, "prueba.jpg");//path,"prueba.jpg");
+        Uri contentUri = Uri.fromFile(f);
         imagenn.setImageURI(contentUri);
 
         Button captura = findViewById(R.id.Capturar);
@@ -40,6 +42,8 @@ public class PantallPrincipal extends AppCompatActivity {
                 }
             }
         });
+
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -53,8 +57,6 @@ public class PantallPrincipal extends AppCompatActivity {
                 FileOutputStream out = openFileOutput("prueba.jpg",MODE_PRIVATE);
                 imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
                 out.close();
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -25,10 +25,13 @@
 
     <ImageView
         android:id="@+id/Imagen"
-        android:layout_width="163dp"
-        android:layout_height="219dp"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        android:layout_marginTop="103dp"
+        android:layout_marginEnd="68dp"
         android:background="@mipmap/ic_launcher_round"
-        tools:layout_editor_absoluteX="111dp"
-        tools:layout_editor_absoluteY="97dp" />
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
